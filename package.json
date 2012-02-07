@@ -4,7 +4,8 @@
   "description": "Javascript implementation of oojah's mqttfs. A very daft idea.",
   "version": "0.0.1",
   "repository": {
-    "url": ""
+	"type": "git",
+    "url": "git://github.com/adamvr/mqttfs.git"
   },
   "main": "mqttfs.js",
   "engines": {
