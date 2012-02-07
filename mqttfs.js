@@ -104,7 +104,7 @@ function onpublish(topic, payload) {
 			debug('Writing'); 
 			stream.write(util.format('[%s] Topic: %s, Payload: %s\n', ''+new Date(), topic, payload));
 			debug('Closing stream');
-			stream.close()
+			stream.end()
 		});
 
 		stream.on('close', function() { debug('Stream %s closed', file); });
