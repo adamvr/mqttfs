@@ -12,7 +12,8 @@
     "node": "~0.6.5"
   },
   "dependencies": {
-	"mqttjs": ">0.1.0"
+	"mqttjs": ">0.1.0",
+	"optimist": ">=0.3.1"
   },
   "devDependencies": {}
 }
