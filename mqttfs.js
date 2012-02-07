@@ -94,22 +94,25 @@ function onpublish(topic, payload) {
 	mkdir(dir, function(err, result) {
 		if (err) return debug(err);
 		debug('Opening %s', file);
+
 		var stream = fs.createWriteStream(file, {
 			flags: 'a',
 			encoding: 'utf8',
 			mode: 0777
 		});
-
 		stream.on('open', function(fd) {
 			debug('Writing'); 
 			stream.write(util.format('[%s] Topic: %s, Payload: %s\n', ''+new Date(), topic, payload));
 			debug('Closing stream');
 			stream.end()
 		});
-
-		stream.on('close', function() { debug('Stream %s closed', file); });
+		stream.on('error', function(err) { 
+			debug('Error on stream %s - err: %j', file, err);
+		});
+		stream.on('close', function() { 
+			debug('Stream %s closed', file);
+		});
 	});
-
 }
 	
 mqtt.createClient(port, host, function(client) {
